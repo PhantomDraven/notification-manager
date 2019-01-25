@@ -27,7 +27,7 @@ class HoursSelector extends Component {
 
     onChange = (moment, timestring) => {
         let time = timestring.split(":");
-        if (time[0] == "" || time[1] === undefined) {
+        if (time[0] === "" || time[1] === undefined) {
             this.setState({message: "Invalid time."});
         } else {
             this.setState({
