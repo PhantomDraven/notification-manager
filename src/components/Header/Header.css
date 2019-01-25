@@ -1,0 +1,39 @@
+/**
+    Smartphone
+**/
+header {
+    position: fixed; 
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    padding: 10px 20px;
+    box-shadow: 0 0 20px rgba(217, 217, 217, 0.7); /* #d9d9d9 */
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+header .account {
+    display: flex;
+    flex: 1;
+    width: auto;
+    justify-content: space-between;
+}
+
+header .account .spacer {
+    padding: 6px 10px;
+    max-width: 100px;
+}
+
+header .account .spacer img {
+    width: 100%;
+}
+
+/**
+Tablet and desktop
+*/
+@media only screen and (min-width: 1224px) {
+    header .account {
+        flex: 0;
+        margin-left: auto;
+    }
+}

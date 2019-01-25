@@ -1,0 +1,44 @@
+.days-selector .ant-form-item label {
+    min-width: 37px;
+}
+
+.days-selector .ant-btn-group button.active {
+    color: #096dd9;
+    background-color: #fff;
+    border-color: #096dd9;
+}
+
+.days-selector .ant-btn-group button:not(.active) {
+    color: rgba(0, 0, 0, 0.65);
+    background-color: #fff;
+    border-color: #d9d9d9;
+}
+
+.custom__checkbox > span {
+    padding: 0;
+}
+
+.custom__checkbox > .ant-checkbox {
+    padding: 5px;
+}
+
+@media screen and (max-width: 768px) {
+   
+    .days-selector .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+        margin-left: 0;
+    }
+
+    .days-selector .custom__checkbox > .ant-checkbox:first-child {
+        padding-left: 0;
+    }
+    
+}
+
+
+@media screen and (min-width: 768px) {
+    
+    .days-selector .ant-form-item label {
+        min-width: 70px;
+    }
+
+}
