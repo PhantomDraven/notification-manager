@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Form, TimePicker, message } from 'antd';
+import { Form, TimePicker } from 'antd';
 
 import moment from 'moment';
 
@@ -10,7 +10,7 @@ class HoursSelector extends Component {
 
     constructor(props) {
         super(props);
-        this.state = this.props.data;
+        this.state = this.props.time;
 
         this.onChange = this.onChange.bind(this);
     }

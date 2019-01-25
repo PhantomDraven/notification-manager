@@ -58,6 +58,16 @@ class DaysSelector extends Component {
         );
     }
 
+    componentWillUpdate = () => {
+        if (this.props.clean) {
+            console.log(this.state);
+            this.setState(
+                {days: this.props.days},
+                () => console.log(this.state)
+            );
+        }
+    }
+
     render() {
         return (
             <div className="wrapper days-selector">

@@ -9,6 +9,9 @@ import "./Main.css";
 
 
 const DAYSDATA = {
+    cleanDay: false,
+    cleanTime: false,
+    cleanMessage: false,
     days: [
         {
             label: "S",
@@ -59,7 +62,15 @@ const DAYSDATA = {
             active: false,
             value: 6
         }
-    ]
+    ],
+    time: {
+        hours: 0,
+        minutes: 0,
+    },
+    message: {
+        title: "",
+        desciption: ""
+    }
 };
 
 class Main extends Component {
@@ -67,15 +78,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...DAYSDATA,
-            time: {
-                hours: this.getTime().hours,
-                minutes: this.getTime().minutes
-            },
-            message: {
-                title: "",
-                desciption: ""
-            }
+            ...DAYSDATA
         }
     }
 
@@ -89,7 +92,31 @@ class Main extends Component {
 
     handleClean = e => {
         e.preventDefault();
-        // TODO: End me - clean inputs
+        this.setState(
+            {
+                ...DAYSDATA,
+            },
+            () => {
+                this.setState({
+                    cleanDay: true,
+                    cleanTime: true,
+                    cleanMessage: true,
+                }, () => console.log(this.state))
+            }
+        );
+    }
+
+    componentWillMount = () => {
+        this.resetTimer();
+    }
+
+    resetTimer = () => {
+        this.setState({
+            time: {
+                hours: this.getTime().hours,
+                minutes: this.getTime().minutes
+            }
+        });
     }
 
     updateDay = (id, value) => {
@@ -128,9 +155,21 @@ class Main extends Component {
         } else if (daily) {
             return (
                 <Form className="main__wrapper">
-                    <DaysSelector days={this.state.days} updateDay={this.updateDay}/>
-                    <HoursSelector data={this.state.time} updateTime={this.updateTime}/>
-                    <MessageDetails data={this.state.message} updateMessage={this.updateMessage}/>
+                    <DaysSelector 
+                        days={this.state.days} 
+                        updateDay={this.updateDay} 
+                        clean={this.state.cleanDay}
+                    />
+                    <HoursSelector 
+                        time={this.state.time} 
+                        updateTime={this.updateTime} 
+                        clean={this.state.cleanTime}
+                    />
+                    <MessageDetails
+                        message={this.state.message}
+                        updateMessage={this.updateMessage}
+                        clean={this.state.cleanMessage}
+                    />
                     <div className="wrapper">
                         <Button type="danger"htmlType="button" onClick={this.handleClean}>Clean</Button>
                     </div>

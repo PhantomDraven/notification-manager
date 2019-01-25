@@ -11,10 +11,7 @@ class MessageDetails extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            title: '',
-            description: ''
-        }
+        this.state = this.props.message;
         this.onChange = this.onChange.bind(this);
     }
 
